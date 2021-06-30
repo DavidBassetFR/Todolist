@@ -1,0 +1,4 @@
+list(id, name, position, created_at, updated_at)
+card(id, title, position, color, created_at, updated_at, #list(id))
+tag(id, name, color, created_at, updated_at)
+card_has_tag (#card(id), #tag(id), created_at, updated_at)

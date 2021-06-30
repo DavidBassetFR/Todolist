@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>oKanban</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <header>
+        <section class="hero is-small is-warning">
+        <div class="hero-body">
+          <p class="title">
+            <a href="/">O'Kanban </a> 
+          </p>
+          <p class="subtitle">
+            La meilleure appli de toDoList
+            
+          </p>
+         
+              
+                  </div>
+        
+
+      
+      </section>
+        <nav class="navbar is-transparent">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="field is-grouped">
+                    <p class="control">
+                        <a class="button is-warning" href="./inscription.html">
+                          <span class="icon">
+                            <i class="fas fa-user"></i>
+                          </span>
+                          <span>S'inscrire</span>
+                        </a>
+                      </p>
+                      <p class="control">
+                        <a class="button is-warning" href="./connexion.html">
+                          <span class="icon">
+                            <i class="fas fa-home"></i>
+                          </span>
+                          <span>Se connecter</span>
+                        </a>
+                      </p>
+              </div>
+            </div>
+          </div> </nav>
+</header>
+<div class=" displayMenuAndBoard">
+<aside class="menu">
+    
+    <p class="menu-label">
+      General
+    </p>
+    <ul class="menu-list">
+      <li><a>Dashboard</a></li>
+      <li><a>Nos partenaires</a></li>
+    </ul>
+    <p class="menu-label">
+      Administration
+    </p>
+    <ul class="menu-list">
+      <li><a>Team Settings</a></li>
+      <li>
+        <a class="is-active">Manage my toDoList</a>
+        <ul>
+          <li><a>Membres</a></li>
+          <li><a>Plugins</a></li>
+          <li><a>Ajouter un membre</a></li>
+        </ul>
+      </li>
+      <li><a>Invitations</a></li>
+      <li><a>Paramètres</a></li>
+      <li><a>Une idée d'amélioration ?</a></li>
+    </ul>
+    <p class="menu-label">
+      Transactions
+    </p>
+    <ul class="menu-list">
+      <li><a> Contact</a></li>
+      <li><a>Notre histoire</a></li>
+      <li><a>Nous offrir un café</a></li>
+    </ul>
+  </aside>
+    <section class="section ">
+        <div class="container">
+            <div class="display">
+            <div class="column">
+                <button class="button is-success" id="addListButton">
+                    <span class="icon is-small">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    &nbsp; Ajouter une liste
+                </button>
+                <button class="button is-danger" id="deleteAllEmptyList">
+                
+                    <span class="icon is-small">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    
+                    &nbsp; Supprimer toutes les listes vides
+                </button>
+            </div>
+        </div>
+            <div class="columns">
+                
+                <div class="column is-full">
+                    <div id="sortablelist" class="card-lists columns">
+                        
+                        <!--/ list -->
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+
+    <article class="message is-warning">
+        <div class="message-header">
+          <p class ="is-pulled-left">Les labels <br> ajoutables </p> 
+          <div  class="column is-half">
+          <a href="#" class="is-pulled-right btn-add-tag">
+            <span class="icon is-small has-text-white">
+                <i class="fas fa-plus"></i>
+            </span>
+        </a>
+            <br>
+            <a href="#" class ="is-pulled-right btn-delete-tag">
+            <span class="icon is-small has-text-danger">
+               <i class="fas fa-trash-alt"></i>
+           </span>
+        
+        </a> </div>   </div> <div  id ="tagPlace" class="message-body"> </div></article> 
+       
+          
+  
+  
+        </div>
+
+    <div class="modal" id="addCardModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <form action="" method="POST">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Ajouter une carte</p>
+                    <button class="delete close" type="button" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <input type="hidden" name="card_id" />
+                    <div class="field">
+                        <label class="label">Titre</label>
+                        <div class="control">
+                            <input type="text" class="input" name="title" value="" placeholder="Nom de la liste">
+                        </div>
+                        <div class="control">
+                            <input type="color" class="input" name="color" value="" placeholder="Color de la carte">
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success">Save changes</button>
+                    <button class="button close" type="button">Cancel</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="addTagModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <form action="" method="POST">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Ajouter un tag</p>
+                    <button class="delete close" type="button" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <input type="hidden" name="tag_id" />
+                    <div class="field">
+                        <label class="label">Titre</label>
+                        <div class="control">
+                            <input type="text" class="input" name="title" value="" placeholder="Nom de la liste">
+                        </div>
+                        <div class="control">
+                            <input type="color" class="input" name="color" value="" placeholder="Color de la carte">
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success">Save changes</button>
+                    <button class="button close" type="button">Cancel</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="addListModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <form action="" enctype="multipart/form-data" method="POST">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Ajouter une liste</p>
+                    <button class="delete close" type="button" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">Nom</label>
+                        <div class="control">
+                            <input type="text" class="input" name="name" value="" placeholder="Nom de la liste">
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success">Save changes</button>
+                    <button class="button close" type="button">Cancel</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+    
+    <div class="modal" id="modifyCardContent">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <form action="" method="POST" class ="changeCardName" enctype="multipart/form-data">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Modifier une carte</p>
+                    <button class="delete close" type="button" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <input type="hidden" name="card_id" />
+                    <div class="field">
+                        <label class="label">Carte</label>
+                        <div class="control">
+                            <input type="text" class="input" name="title" value="" placeholder="Nom de la carte">
+                        </div>
+                        <div class="control">
+                            <input type="color" class="input" name="color" value="" placeholder="Color de la carte">
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success">Save changes</button>
+                    <button class="button close" type="button">Cancel</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="deleteCard">
+        <div class="modal-background"></div>
+                    <input type="hidden" id ="deleteCardInput" >
+                    <button class="button is-danger">Êtes vous sûr de vouloir supprimer cette carte ?</button>
+                    <br>
+                    <button class="button close" type="button">Annuler</button>
+          
+        
+    </div>
+
+    <div class="modal" id="deleteListConfirm">
+        <div class="modal-background"></div>
+                    <input type="hidden" id ="deleteListInput">
+                    <button class="button is-danger">Êtes vous sûr de vouloir supprimer cette liste ?</button>
+                    <br>
+                    <button class="button close" type="button">Annuler</button>
+          
+        
+    </div>
+
+    <template id="listTemplate">
+        <!-- list -->
+      
+        <div  class="column is-one-quarter panel" data-list-id="A">
+            <div class="panel-heading has-background-warning">
+                <div class="columns">
+
+                    <div class="column">
+                        <h2 class="has-text-green list-title">Perso</h2>
+
+                        <form class ="changeTitle is-hidden" action="" method="PATCH" >
+                            <input type="hidden" id ="list_idTitle" name="list_id" value="1">
+                            <div class="field has-addons">
+                                <div class="control">
+                                    <input type="text" class="input is-small" name="name" value=""
+                                        placeholder="Nom de la liste">
+                                </div>
+                                <div class="control">
+                                    <button class="button is-small is-success">Valider</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="column is-one-quarter">
+                       <br>
+                        <a href="#" class="is-pulled-left btn-add-card">
+                            <span class="icon is-small has-text-white">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </a> 
+                        <a href="#"  class ="is-pulled-right" id ="deleteList">
+                            <span class="icon is-small has-text-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </span>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div  class="panel-block is-block has-background-light sortableCard">
+                
+            </div>
+        </div>
+        <!--/ list -->
+    </template>
+
+    <template id="cardTemplate">
+        <!-- card -->
+        <div class="box" data-card-id="I">
+            <div class="columns">
+                <div class="column card-title">
+                    Faire les courses
+                </div>
+                <div class="column is-one-quarter tags-title">
+
+                </div>
+                <div class="column is-narrow">
+                    <a href="#">
+                        <span class="icon is-small has-text-primary">
+                            <i class="fas fa-pencil-alt"></i>
+                        </span>
+                    </a>
+                    <a href="#" id ="deletecard">
+                        <span class="icon is-small has-text-danger">
+                            <i class="fas fa-trash-alt"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--/ card -->
+    </template>
+
+    <!-- Chargement de mon fichier JS -->
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/list.js"></script>
+    <script src="./assets/js/card.js"></script>
+    <script src="./assets/js/tag.js"></script>
+    
+</body>
+
+</html>

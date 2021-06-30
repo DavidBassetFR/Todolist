@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>oKanban</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <header>
+        <section class="hero is-small is-warning">
+        <div class="hero-body">
+          <p class="title">
+            <a href="/">O'Kanban </a> 
+          </p>
+          <p class="subtitle">
+            La meilleure appli de toDoList
+            
+          </p>
+         
+              
+                  </div>
+        
+
+      
+      </section>
+        <nav class="navbar is-transparent">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="field is-grouped">
+                    <p class="control">
+                        <a class="button is-warning" href="./inscription.html">
+                          <span class="icon">
+                            <i class="fas fa-user"></i>
+                          </span>
+                          <span>S'inscrire</span>
+                        </a>
+                      </p>
+                      <p class="control">
+                        <a class="button is-warning" href="./connexion.html">
+                          <span class="icon">
+                            <i class="fas fa-home"></i>
+                          </span>
+                          <span>Se connecter</span>
+                        </a>
+                      </p>
+              </div>
+            </div>
+          </div> </nav>
+</header>
+        <div class ="formContainer ">
+        <div class="formulaireHeader">
+            <article class="message is-warning">
+                <div class="message-header">
+                  <p>S'inscrire chez O'Kanban</p>
+
+                </div>
+                <div class="message-body">
+                 TO DO LIST
+                </div>
+                
+              </article>
+
+    </div>
+        <form action="/signup" method="POST" class="form-signin">
+            <div class ="formulaireARemplir">
+            <div class="field">
+                <label class="label">Nom </label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Nom ici">
+                </div>
+              </div>
+
+                <div class="field">
+                    <label class="label">Prénom </label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Prénom ici">
+                    </div>
+                  </div>
+              <div class="field">
+                <label class="label">Pseudo</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="Text input" value="bulma">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+
+                  </span>
+                </div>
+              
+              </div>
+              
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input " type="email" placeholder="Email input" value="oclock@">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+
+                  </span>
+                </div>
+                
+              </div>
+              <div class="field">
+                <label class="label">Mot de passe</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="password" placeholder="Mot de passe ici" value="">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+
+                  </span>
+                </div>
+              
+              </div>
+              
+
+ 
+              
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                   J'accepte les  <a href="#">conditions générales d'utilisations</a>
+                  </label>
+                </div>
+              </div>
+
+              
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link is-success">S'inscrire</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light is-danger">Annuler</button>
+                </div>
+              </div>
+            </div>
+        </form>
+    </div>
+    
+    </body></html>
